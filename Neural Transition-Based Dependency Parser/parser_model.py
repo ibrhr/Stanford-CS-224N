@@ -159,7 +159,7 @@ class ParserModel(nn.Module):
         
         x = self.embedding_lookup(w)  # Shape: (batch_size, n_features * embed_size)
         x = F.relu(torch.matmul(x, self.embed_to_hidden_weight) + self.embed_to_hidden_bias) # Shape: (batch_size, hidden_size)
-        x = self.dropout() 
+        x = self.dropout(x) 
         
         logits = torch.matmul(x, self.hidden_to_logits_weight) + self.hidden_to_logits_bias
 
